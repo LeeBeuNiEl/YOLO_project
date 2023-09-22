@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset = "utf-8">
-        <title>Java Script Practice</title>
-        <script>
-            function toggleDayNight(self){
-                var target = document.querySelector('body');
-                if (self.value === 'night'){
-                    target.style.backgroundColor = 'black';
-                    target.style.color = 'white';
-                    self.value = 'day';
-                }
-                else{
-                    target.style.backgroundColor = 'white';
-                    target.style.color = 'black';
-                    self.value = 'night';
-                }
+    <meta charset = "utf-8">
+    <script>
+        function toggleDayNight(button){
+            var target = document.querySelector('body');
+            if (button.value === 'night'){
+                target.style.backgroundColor = 'black';
+                target.style.color = 'white';
+                button.value = 'day';
             }
-        </script>
-
+            else{
+                target.style.backgroundColor = 'white';
+                target.style.color = 'black';
+                button.value = 'night';
+            }
+        }
+    </script>
+    <head>
+        <title>자바스크립트 연습페이지</title>
     </head>
     <body>
         <h1><a href="Index.html">WEB</a></h1>
