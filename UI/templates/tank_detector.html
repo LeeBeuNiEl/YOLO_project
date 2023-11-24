@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Real Time Tank Detector</title>
+  <link rel = "stylesheet" type="text/css" href="\static\index.css">
+  <script defer src="static\index.js"></script>
+</head>
+
+<body>
+  <div class ="topnav">
+    <a class="{{ 'active' if request.path == '/' else '' }}" href="{{ url_for('home') }}">Home</a>
+    <a class="{{ 'active' if request.path == '/tank_detector' else '' }}" href="{{ url_for('tank_detector') }}">Tank Detector</a>
+  </div>
+  <div class="button-container">
+    <button class="run-button active" onclick="toggleImages('activation')">Run</button>
+    <button class="stop-button" onclick="toggleImages('deactivation')">Stop</button>
+  </div>
+
+  <div class="video-container">
+    <img src="{{ url_for('video') }}" class="activation" id="activationImage">
+    <img src="" class="deactivation" id="deactivationImage">
+  </div>
+</body>
+</html>

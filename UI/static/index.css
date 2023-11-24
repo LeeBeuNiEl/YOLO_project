@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#333;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.topnav{
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background-color:#333;
+  border-bottom: 2px solid #ED7D31;
+}
+.topnav a{
+  color: #ffffff;
+  background-color: rgb(255, 157, 92);
+  text-align: center;
+  padding:14px 16px;
+  text-decoration: none;
+  font-size: 30px;
+}
+.topnav a:hover{
+  background-color: #ffffff;
+  color: black;
+}
+.topnav a.active{
+  background-color: #ED7D31;
+  color: #ffffff;
+}
+.deactivation {
+  display: block;
+  }
+
+.activation {
+  display: none;
+  }
+
+.video-container {
+  display: flex;
+  flex-direction: column; /* 수직으로 아이템 정렬 */
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh; /* 전체 화면 높이 */
+  margin-top: 100px;
+  margin-left: 5px;
+}
+.video-container img {
+  width: 50%;
+  height: auto; 
+}
+
+.button-container {
+  float: left;
+  margin-top: 5px;
+}
+
+.button-container button {
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 30px;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px; /* 버튼 사이 여백 조절 */
+}
+
+.run-button:hover, .stop-button:hover {
+  background-color: #ffffff;
+  color: #ED7D31;
+}
+
+.run-button.active, .stop-button.active {
+  background-color: #ED7D31;
+  color: #ffffff;
+}
