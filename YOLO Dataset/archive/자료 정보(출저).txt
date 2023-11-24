@@ -1,4 +1,0 @@
-Webpage Link : https://www.kaggle.com/datasets/antoreepjana/military-tanks-dataset-images
-License : Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
-Source : military-today.com
-Directory Name = Tank Name
