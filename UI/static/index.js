@@ -1,7 +1,7 @@
 // 페이지가 로드될 때 초기 설정
 document.addEventListener('DOMContentLoaded', function() {
     // 로컬 스토리지에서 저장된 이미지 상태 가져오기
-    var imageType = localStorage.getItem('imageType');
+    let imageType = localStorage.getItem('imageType');
   
     // 만약 저장된 값이 없으면 기본으로 'deactivation'으로 설정
     imageType = imageType || 'deactivation';
