@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // 이미지 및 버튼 상태를 설정하는 함수
   function setImagesAndButtons(imageType) {
-    var activationImage = document.getElementById('activationImage');
-    var deactivationImage = document.getElementById('deactivationImage');
-    var runButton = document.querySelector('.run-button');
-    var stopButton = document.querySelector('.stop-button');
+    let activationImage = document.getElementById('activationImage');
+    let deactivationImage = document.getElementById('deactivationImage');
+    let runButton = document.querySelector('.run-button');
+    let stopButton = document.querySelector('.stop-button');
   
     if (imageType === 'activation') {
       activationImage.style.display = 'block';
