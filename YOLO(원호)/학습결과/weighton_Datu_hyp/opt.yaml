@@ -1,0 +1,69 @@
+weights: yolov5s.pt
+cfg: ./models/yolov5s.yaml
+data: "/home/jcs/\uBC14\uD0D5\uD654\uBA74/Project/Datu/data.yaml"
+hyp:
+  lr0: 0.01112
+  lrf: 0.0104
+  momentum: 0.8603
+  weight_decay: 0.0002
+  warmup_epochs: 2.9861
+  warmup_momentum: 0.93609
+  warmup_bias_lr: 0.12011
+  box: 0.05183
+  cls: 0.5533
+  cls_pw: 0.86192
+  obj: 0.55489
+  obj_pw: 0.89669
+  iou_t: 0.2
+  anchor_t: 5.2839
+  fl_gamma: 0.0
+  hsv_h: 0.014
+  hsv_s: 0.69865
+  hsv_v: 0.29491
+  degrees: 0.0
+  translate: 0.10627
+  scale: 0.36487
+  shear: 0.0
+  perspective: 0.0
+  flipud: 0.0
+  fliplr: 0.5
+  mosaic: 0.6335
+  mixup: 0.0
+  copy_paste: 0.0
+  anchors: 2.9817
+epochs: 300
+batch_size: 32
+imgsz: 640
+rect: false
+resume: false
+nosave: false
+noval: false
+noautoanchor: false
+noplots: false
+evolve: null
+bucket: ''
+cache: null
+image_weights: false
+device: ''
+multi_scale: false
+single_cls: false
+optimizer: SGD
+sync_bn: false
+workers: 8
+project: runs/train
+name: "/home/jcs/\uBC14\uD0D5\uD654\uBA74/Project/Results/weighton_hyp"
+exist_ok: false
+quad: false
+cos_lr: false
+label_smoothing: 0.0
+patience: 100
+freeze:
+- 0
+save_period: -1
+seed: 0
+local_rank: -1
+entity: null
+upload_dataset: false
+bbox_interval: -1
+artifact_alias: latest
+save_dir: "/home/jcs/\uBC14\uD0D5\uD654\uBA74/Project/Results/weighton_hyp"
