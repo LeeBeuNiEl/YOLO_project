@@ -77,7 +77,7 @@ def gen():
     save_crop=False  # save cropped prediction boxes
     nosave=False  # do not save images/videos
     classes=None  # filter by class: --class 0, or --class 0 2 37
-029*-8*+++++    agnostic_nms=False  # class-agnostic NMS
+    agnostic_nms=False  # class-agnostic NMS
     augment=False  # augmented inference
     visualize=False  # visualize features
     update=False  # update all models
