@@ -50,14 +50,19 @@ body {
   align-items: flex-start;
   height: 100vh; /* 전체 화면 높이 */
   margin-top: 100px;
-  margin-left: 5px;
+  margin-left: 350px;
 }
 .video-container img {
-  width: 50%;
+  width: 70%;
+  height: auto; 
+}
+.video-container video {
+  width: 70%;
   height: auto; 
 }
 
 .button-container {
+  display:flex;
   float: left;
   margin-top: 5px;
 }
@@ -73,12 +78,13 @@ body {
   margin-right: 5px; /* 버튼 사이 여백 조절 */
 }
 
-.run-button:hover, .stop-button:hover {
+
+.stop-button:hover,.excam-button:hover, .video-button:hover, .incam-button:hover{
   background-color: #ffffff;
   color: #ED7D31;
 }
 
-.run-button.active, .stop-button.active {
+.stop-button.active, .excam-button.active, .video-button.active, .incam-button.active{
   background-color: #ED7D31;
   color: #ffffff;
 }

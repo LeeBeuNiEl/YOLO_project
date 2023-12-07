@@ -1,3 +1,4 @@
+<!-- tank_detector.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,23 +7,34 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Real Time Tank Detector</title>
-  <link rel = "stylesheet" href="\static\index.css">
+  <link rel="stylesheet" href="\static\index.css">
   <script defer src="static\index.js"></script>
 </head>
 
 <body>
-  <div class ="topnav">
+
+  <div class="topnav">
     <a class="{{ 'active' if request.path == '/' else '' }}" href="{{ url_for('home') }}">Home</a>
     <a class="{{ 'active' if request.path == '/tank_detector' else '' }}" href="{{ url_for('tank_detector') }}">Tank Detector</a>
   </div>
+
   <div class="button-container">
-    <button class="run-button active" onclick="toggleImages('activation')">Run</button>
+    <button class="excam-button" onclick="toggleImages('act_video0')">External Camera</button>
+    <button class="incam-button"onclick="toggleImages('act_video1')">Built-in Camera</button>
+    <button class="video-button"onclick="toggleImages('act_video2')">Video Source</button>
     <button class="stop-button" onclick="toggleImages('deactivation')">Stop</button>
   </div>
 
   <div class="video-container">
-    <img src="{{ url_for('video') }}" class="activation" id="activationImage">
+    <img src="{{ url_for('video0') }}" class="act_video0" id="activationImage0">
+    <img src="{{ url_for('video1') }}" class="act_video1" id="activationImage1">
+    <video class= "act_video2" id="activationImage2"autoplay loop muted>
+      <source src="{{ url_for('video2') }}" type="video/mp4">
+    </video>
     <img src="" class="deactivation" id="deactivationImage">
   </div>
+
 </body>
+
 </html>
+

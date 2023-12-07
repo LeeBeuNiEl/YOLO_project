@@ -7,9 +7,15 @@ import os
 from PIL import Image
 import cv2
 import numpy as np
+import argparse
+import csv
+import os
+import platform
+import sys
+from pathlib import Path
 
 import torch
-from flask import Flask, render_template, request, redirect, Response
+from flask import Flask, render_template, request, redirect, Response, send_file
 
 app = Flask(__name__)
 
@@ -20,27 +26,10 @@ model = torch.hub.load(
         "ultralytics/yolov5", "yolov5s", pretrained=True, force_reload=True
         )#.autoshape()  # force_reload = recache latest code
 #'''
-# Load Custom Model
-# model = torch.hub.load("ultralytics/yolov5", "custom", path = "./best_damage.pt", force_reload=True)
 
-# Set Model Settings
-
-model.conf = 0.6  # confidence threshold (0-1)
-model.iou = 0.45  # NMS IoU threshold (0-1)
 
 from io import BytesIO
 
-#  This is copied from to test the code is working or not 
-# ======================================================
-# ======================================================
-import argparse
-import csv
-import os
-import platform
-import sys
-from pathlib import Path
-
-import torch
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -56,14 +45,14 @@ from utils.general import (LOGGER, Profile, check_file, check_img_size, check_im
                            increment_path, non_max_suppression, print_args, scale_boxes, strip_optimizer, xyxy2xywh)
 from utils.torch_utils import select_device, smart_inference_mode
 
-# This is copied from to test the code is working or not 
-# ======================================================
-# ======================================================
 
 @smart_inference_mode()
-def gen():
+def gen(source):
     weights=ROOT / 'best.pt'  # model path or triton URL
-    source= "https://www.youtube.com/watch?v=5JYZ0FyS39Y"
+    if source == 0:
+        source = "http://192.168.0.233:5000"
+    elif source == 1:
+        source = 0
     data=ROOT / 'data/coco128.yaml'  # dataset.yaml path
     imgsz=(640, 640)  # inference size (height, width)
     conf_thres=0.25  # confidence threshold
@@ -160,7 +149,6 @@ def gen():
 
         # Process predictions
         for i, det in enumerate(pred):  # per image
-            print("Inside the loop")
             seen += 1
             if webcam:  # batch_size >= 1
                 p, im0, frame = path[i], im0s[i].copy(), dataset.count
@@ -213,6 +201,21 @@ def gen():
             frame=buffer.tobytes()
             yield(b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+def gen1():
+    cap = cv2.VideoCapture("video.mp4")
+
+    while cap.isOpened():
+        # Capture frame-by-frame
+        success, frame = cap.read()
+
+        if success:
+            yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame.tobytes() + b'\r\n')
+        else:
+            break
+    cap.release()
+
+
+
 @app.route('/')
 def home():
     
@@ -222,12 +225,27 @@ def home():
 def tank_detector():
     return render_template('tank_detector.html')
 
-@app.route('/video')
-def video():
+@app.route('/video0')
+def video0():
     """Video streaming route. Put this in the src attribute of an img tag."""
 
-    return Response(gen(),
+    return Response(gen(0),
                         mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video1')
+def video1():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+
+    return Response(gen(1),
+                        mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video2')
+def video2():
+    
+    return send_file("video.mp4")
+
+
+
 '''                        
 @app.route('/video')
 def video():
